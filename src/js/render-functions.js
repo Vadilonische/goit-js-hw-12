@@ -1,29 +1,71 @@
+// import SimpleLightbox from 'simplelightbox';
+// import 'simplelightbox/dist/simple-lightbox.min.css';
+
+// export function imageTemplate(image) {
+//   return `<li class="image-items">
+//         <a class="image-link" href="${image.largeImageURL}">
+//           <img
+//             src="${image.webformatURL}"
+//             alt="${image.tags}"
+//             class="photo-image"
+//           />
+//         </a>
+//         <div class="image-info">
+//           <p><span class="accent">Likes:</span> ${image.likes}</p>
+//           <p><span class="accent">Views:</span> ${image.views}</p>
+//           <p><span class="accent">Comments:</span> ${image.comments}</p>
+//           <p><span class="accent">Downloads:</span> ${image.downloads}</p>
+//         </div>
+//       </li>`;
+// }
+// export function renderImages(arr) {
+//   const searchResults = document.querySelector('#search-results');
+//   searchResults.innerHTML = arr.map(imageTemplate).join('');
+//   const lightbox = new SimpleLightbox('.image-link', {
+//     captionsData: 'alt',
+//     captionDelay: 250,
+//   });
+//   lightbox.refresh();
+// }
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-export function imageTemplate(image) {
+import { refs } from '../main';
+
+function imageTemplate(image) {
+  const {
+    largeImageURL,
+    webformatURL,
+    tags,
+    likes,
+    views,
+    comments,
+    downloads,
+  } = image;
   return `<li class="image-items">
-        <a class="image-link" href="${image.largeImageURL}">
+        <a class="image-link" href="${largeImageURL}">
           <img
-            src="${image.webformatURL}"
-            alt="${image.tags}"
+            src="${webformatURL}"
+            alt="${tags}"
             class="photo-image"
           />
         </a>
         <div class="image-info">
-          <p><span class="accent">Likes:</span> ${image.likes}</p>
-          <p><span class="accent">Views:</span> ${image.views}</p>
-          <p><span class="accent">Comments:</span> ${image.comments}</p>
-          <p><span class="accent">Downloads:</span> ${image.downloads}</p>
+          <p><span class="accent">Likes:</span> ${likes}</p>
+          <p><span class="accent">Views:</span> ${views}</p>
+          <p><span class="accent">Comments:</span> ${comments}</p>
+          <p><span class="accent">Downloads:</span> ${downloads}</p>
         </div>
       </li>`;
 }
+
+function imagesTemplate(arr) {
+  return arr.map(imageTemplate).join('');
+}
+
 export function renderImages(arr) {
-  const searchResults = document.querySelector('#search-results');
-  searchResults.innerHTML = arr.map(imageTemplate).join('');
-  const lightbox = new SimpleLightbox('.image-link', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
-  lightbox.refresh();
+  const markup = imagesTemplate(arr);
+
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
