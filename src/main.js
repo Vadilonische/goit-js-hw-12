@@ -97,6 +97,7 @@ async function onFormSubmit(e) {
     showError(
       'Sorry, there are no images matching your search query. Please try again!'
     );
+    hideLoadMore();
     return;
   }
 
@@ -132,6 +133,6 @@ async function onLoadMoreClick() {
   }
 
   myScroll();
-  hideLoader();
   checkBtnStatus();
+  hideLoader();
 }
