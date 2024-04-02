@@ -37,11 +37,11 @@ function imagesTemplate(arr) {
 export function renderImages(arr) {
   const markup = imagesTemplate(arr);
 
+  refs.gallery.insertAdjacentHTML('beforeend', markup);
+
   const lightbox = new SimpleLightbox('.image-link', {
     captionsData: 'alt',
     captionDelay: 250,
   });
   lightbox.refresh();
-
-  refs.gallery.insertAdjacentHTML('beforeend', markup);
 }
