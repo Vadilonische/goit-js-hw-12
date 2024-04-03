@@ -1,9 +1,9 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
-import { refs } from '../main';
+import { refs } from './refs';
 
-function imageTemplate(image) {
+export function imageTemplate(image) {
   const {
     largeImageURL,
     webformatURL,
@@ -30,7 +30,7 @@ function imageTemplate(image) {
       </li>`;
 }
 
-function imagesTemplate(arr) {
+export function imagesTemplate(arr) {
   return arr.map(imageTemplate).join('');
 }
 

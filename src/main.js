@@ -5,14 +5,7 @@ import { getImages } from './js/pixabay-api';
 import { renderImages } from './js/render-functions';
 
 //================================
-
-export const refs = {
-  searchForm: document.querySelector('.search-form'),
-  inputSearch: document.querySelector('.input-search'),
-  gallery: document.querySelector('.gallery'),
-  btnLoadMore: document.querySelector('.btn-load-more'),
-  loader: document.querySelector('.loader'),
-};
+import { refs } from './js/refs';
 
 //================================
 
