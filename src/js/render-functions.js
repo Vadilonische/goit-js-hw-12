@@ -3,6 +3,11 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { refs } from './refs';
 
+const lightbox = new SimpleLightbox('.image-link', {
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+
 export function imageTemplate(image) {
   const {
     largeImageURL,
@@ -39,9 +44,5 @@ export function renderImages(arr) {
 
   refs.gallery.insertAdjacentHTML('beforeend', markup);
 
-  const lightbox = new SimpleLightbox('.image-link', {
-    captionsData: 'alt',
-    captionDelay: 250,
-  });
   lightbox.refresh();
 }
